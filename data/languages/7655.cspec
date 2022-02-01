@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<compiler_spec>
+  <global>
+    <range space="RAM"/>
+  </global>
+  <stackpointer register="SP" space="RAM" growth="negative"/>
+  <default_proto>
+    <prototype name="__fastcall" extrapop="2" stackshift="2" type="fastcall">
+      <input>
+
+      </input>
+      <output>
+
+      </output>
+      <unaffected>
+        <register name="SP"/>
+      </unaffected>
+    </prototype>
+  </default_proto>
+</compiler_spec>

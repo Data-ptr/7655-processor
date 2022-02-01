@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<processor_spec>
+  <programcounter register="PC"/>
+
+  <default_symbols>
+    <symbol name="DDR1" address="0"/>
+    <symbol name="DDR2" address="1"/>
+    <symbol name="PORT1" address="2"/>
+    <symbol name="PORT2" address="3"/>
+    <symbol name="DDR3" address="4"/>
+    <symbol name="DDR4" address="5"/>
+    <symbol name="PORT3" address="6"/>
+    <symbol name="PORT4" address="7"/>
+    <symbol name="UKNR_8" address="8"/>
+    <symbol name="UKNR_9" address="9"/>
+    <symbol name="UKNR_A" address="A"/>
+    <symbol name="UKNR_B" address="B"/>
+    <symbol name="UKNR_C" address="C"/>
+    <symbol name="UKNR_D" address="D"/>
+    <symbol name="UKNR_E" address="E"/>
+    <symbol name="??CSR??" address="F"/>
+    <symbol name="SCI_RMC?BAUD?" address="10"/>
+    <symbol name="SCI_CSR?SCR?" address="11"/>
+    <symbol name="SCI_RX" address="12"/>
+    <symbol name="SCI_TX" address="13"/>
+    <symbol name="??RAM_CTL??" address="14"/>
+    <symbol name="DDR5" address="15"/>
+    <symbol name="PORT5" address="16"/>
+    <symbol name="UKNR_17" address="17"/>
+    <symbol name="UKNR_18" address="18"/>
+    <symbol name="UKNR_19" address="19"/>
+    <symbol name="UKNR_1A" address="1A"/>
+  </default_symbols>
+
+  <default_memory_blocks>
+    <memory_block name="IO" start_address="0" length="0x40" initialized="true"/>
+    <memory_block name="RAM" start_address="0x40" length="1600" initialized="true"/>
+  </default_memory_blocks>
+</processor_spec>
