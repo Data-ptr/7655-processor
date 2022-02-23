@@ -78,11 +78,11 @@ define token data24 (24)
 #define pcodeop readIRQ;
 
 #
-# Tables
+# ========== Tables
 #
 
 #Table header
-#      #Display   #Bit Pattern                    #Action                       #Semantics
+#Table #Display   #Bit Pattern                    #Action                       #Semantics
 #TABLE:DISPLAY is (MATCH & MATCH | MATCH); MATCH  [ reloc = inst_next + FEILD ] { export *:N FIELD; }
 ###
 
@@ -136,44 +136,44 @@ PTR8: byte8,X  is (op_hi=0x6 | op_hi=0xA | op_hi=0xE) & X; byte8 { tmp:2 = byte8
 PTR8: Y is ((op_a_hi=0xA | op_a_hi=0xE) & op_b=0x80) & Y { export *:1 Y; }
 
 #2-byte data [ DIRECT ]
-PTR16: byte8  is (op=0xD3 | op=0x93); byte8 { export *:2 byte8; }      #ADDD, SUBD
-PTR16: byte8  is (op=0x1D | op=0x9C); byte8 { export *:2 byte8; }      #CPD, CPX
-PTR16: byte8  is (op=0xDC | op=0xDD); byte8 { export *:2 byte8; }      #LDD, STD
-PTR16: byte8  is (op=0xDE | op=0xDF); byte8 { export *:2 byte8; }      #LDX, STX
-PTR16: byte8  is (op=0x9E | op=0x9F); byte8 { export *:2 byte8; }      #LDS, STS
-PTR16: byte8  is (op_a=0xCD & op_b=0xDF); byte8 { export *:2 byte8; }  #STY
+PTR16: byte8    is (op=0xD3 | op=0x93);     byte8 { export *:2 byte8; } #ADDD, SUBD
+PTR16: byte8    is (op=0x1D | op=0x9C);     byte8 { export *:2 byte8; } #CPD, CPX
+PTR16: byte8    is (op=0xDC | op=0xDD);     byte8 { export *:2 byte8; } #LDD, STD
+PTR16: byte8    is (op=0xDE | op=0xDF);     byte8 { export *:2 byte8; } #LDX, STX
+PTR16: byte8    is (op=0x9E | op=0x9F);     byte8 { export *:2 byte8; } #LDS, STS
+PTR16: byte8    is (op_a=0xCD & op_b=0xDF); byte8 { export *:2 byte8; } #STY
 
 # [ EXTENDED ]
-PTR16: byte16 is (op=0xF3 | op=0xB3); byte16 { export *:2 byte16; }    #ADDD, SUBD
-PTR16: byte16 is (op=0x1F | op=0xBC); byte16 { export *:2 byte16; }    #CPD, CPX
-PTR16: byte16 is (op=0xFC | op=0xFD); byte16 { export *:2 byte16; }    #LDD, STD
-PTR16: byte16 is (op=0xFE | op=0xFF); byte16 { export *:2 byte16; }    #LDX, STX
-PTR16: byte16 is (op=0xBE | op=0xBF); byte16 { export *:2 byte16; }    #LDS, STS
+PTR16: byte16   is (op=0xF3 | op=0xB3);         byte16 { export *:2 byte16; } #ADDD, SUBD
+PTR16: byte16   is (op=0x1F | op=0xBC);         byte16 { export *:2 byte16; } #CPD, CPX
+PTR16: byte16   is (op=0xFC | op=0xFD);         byte16 { export *:2 byte16; } #LDD, STD
+PTR16: byte16   is (op=0xFE | op=0xFF);         byte16 { export *:2 byte16; } #LDX, STX
+PTR16: byte16   is (op=0xBE | op=0xBF);         byte16 { export *:2 byte16; } #LDS, STS
 
 # [ INDEXED X ]
-PTR16: byte8,X  is (op=0xE3 | op=0xA3) & X; byte8 { tmp:2 = byte8 + X; export *:2 tmp; }      #ADDD, SUBD
-PTR16: byte8,X  is (op=0xAC) & X; byte8 { tmp:2 = byte8 + X; export *:2 tmp; }                #CPX
-PTR16: byte8,X  is (op=0x1E) & X; byte8 { tmp:2 = byte8 + X; export *:2 tmp; }                #CPD
-PTR16: byte8,X  is (op=0xEC | op=0xED) & X; byte8 { tmp:2 = byte8 + X; export *:2 tmp; }      #LDD, STD
-PTR16: byte8,X  is (op=0xEE | op=0xEF) & X; byte8 { tmp:2 = byte8 + X; export *:2 tmp; }      #LDX, STX
-PTR16: byte8,X  is (op=0xAE | op=0xAF) & X; byte8 { tmp:2 = byte8 + X; export *:2 tmp; }      #LDS, STS
-PTR16: byte8,X  is (op_a=0xCD & op_b=0xEE) & X; byte8 { tmp:2 = byte8 + X; export *:2 tmp; }  #LDY
+PTR16: byte8,X  is (op=0xE3 | op=0xA3) & X;     byte8 { tmp:2 = byte8 + X; export *:2 tmp; } #ADDD, SUBD
+PTR16: byte8,X  is (op=0xAC) & X;               byte8 { tmp:2 = byte8 + X; export *:2 tmp; } #CPX
+PTR16: byte8,X  is (op=0x1E) & X;               byte8 { tmp:2 = byte8 + X; export *:2 tmp; } #CPD
+PTR16: byte8,X  is (op=0xEC | op=0xED) & X;     byte8 { tmp:2 = byte8 + X; export *:2 tmp; } #LDD, STD
+PTR16: byte8,X  is (op=0xEE | op=0xEF) & X;     byte8 { tmp:2 = byte8 + X; export *:2 tmp; } #LDX, STX
+PTR16: byte8,X  is (op=0xAE | op=0xAF) & X;     byte8 { tmp:2 = byte8 + X; export *:2 tmp; } #LDS, STS
+PTR16: byte8,X  is (op_a=0xCD & op_b=0xEE) & X; byte8 { tmp:2 = byte8 + X; export *:2 tmp; } #LDY
 
 # [ INDEXED Y ]
-PTR16: Y  is ((op_a=0xE3 | op_a=0xA3) & op_b=0x80) & Y { export *:2 Y; }      #ADDD, SUBD
-PTR16: Y  is (op_a=0xAC & op_b=0x80) & Y               { export *:2 Y; }      #CPX
-PTR16: Y  is ((op_a=0xEC | op_a=0xED) & op_b=0x80) & Y { export *:2 Y; }      #LDD, STD
-PTR16: Y  is ((op_a=0xEE | op_a=0xEF) & op_b=0x80) & Y { export *:2 Y; }      #LDX, STX
-PTR16: Y  is ((op_a=0xAE | op_a=0xAF) & op_b=0x80) & Y { export *:2 Y; }      #LDS, STS
+PTR16: Y        is ((op_a=0xE3 | op_a=0xA3) & op_b=0x80) & Y { export *:2 Y; } #ADDD, SUBD
+PTR16: Y        is (op_a=0xAC & op_b=0x80) & Y               { export *:2 Y; } #CPX
+PTR16: Y        is ((op_a=0xEC | op_a=0xED) & op_b=0x80) & Y { export *:2 Y; } #LDD, STD
+PTR16: Y        is ((op_a=0xEE | op_a=0xEF) & op_b=0x80) & Y { export *:2 Y; } #LDX, STX
+PTR16: Y        is ((op_a=0xAE | op_a=0xAF) & op_b=0x80) & Y { export *:2 Y; } #LDS, STS
 
-ADDR:   byte8 		is op=0x9D;     byte8	{ export *:1 byte8; } #{ export *[ROM]:1 byte8; }
-ADDR:   byte16   is (op=0x7E | op=0xBD); byte16 { export *:1 byte16; } #{ export *[ROM]:1 byte16; }
+ADDR: byte8     is op=0x9D;                     byte8	 { export *:1 byte8;  } #{ export *[ROM]:1 byte8;  } #JSR
+ADDR: byte16    is (op=0x7E | op=0xBD);         byte16 { export *:1 byte16; } #{ export *[ROM]:1 byte16; } #JMP, JSR
 
-ADDRI:  byte8,X  is (op=0x6E | op=0xAD) & X; byte8  { tmp:2 = byte8 + X; export tmp; }
+ADDRI: byte8,X  is (op=0x6E | op=0xAD) & X;     byte8  { tmp:2 = byte8 + X; export tmp; } #JMP, JSR
 
 #4-byte instruction
-PTR8: byte_a is (op=0x87 | op=0x8F); byte_a { export *:1 byte_a; }
-PTR8: byte_a,X  is (op=0xCF) & X; byte_a { tmp:2 = byte_a + X; export *:1 tmp; }
+PTR8: byte_a    is (op=0x87 | op=0x8F);     byte_a { export *:1 byte_a; }                  #BRSET, dir; BRCLR,dir
+PTR8: byte_a,X  is (op=0xC7 | op=0xCF) & X; byte_a { tmp:2 = byte_a + X; export *:1 tmp; } #BRSET ind,x; BRCLR ind,x
 
 IMM8: "#"byte_b is (op=0x87 | op=0x8F | op=0xCF); byte_b
 {
@@ -182,12 +182,11 @@ IMM8: "#"byte_b is (op=0x87 | op=0x8F | op=0xCF); byte_b
   export *[const]:1 byte_b;
 }
 
-REL: reloc is (op=0x87 | op=0x8F | op=0xCF); rel_2 [ reloc = inst_next + rel_2; ] { export *:2 reloc; } #{ export *[ROM]:2 reloc; }
+REL: reloc is (op=0x87 | op=0x8F | op=0xCF); rel_2 [ reloc = inst_next + rel_2; ] { export *:2 reloc; } #{ export *[ROM]:2 reloc; } #
 
-:OIM PTR8, IMM8 is op=0x03 ... & PTR8 & IMM8
-{
-  PTR8 = PTR8 | IMM8;
-}
+#
+# ========== MACROS
+#
 
 macro adc8(reg, data)
 {
@@ -241,6 +240,10 @@ macro add16(reg, data)
   Z = (reg == 0);
   N = (reg s< 0);
 }
+
+#
+# ========== OPERATIONS
+#
 
 :ABA is op=0x1B
 {
@@ -523,6 +526,13 @@ macro add16(reg, data)
 }
 
 :BRSET PTR8, IMM8, REL is op=0x87 ... & REL & IMM8 & PTR8
+{
+	local mask = IMM8;
+	local result = PTR8 & mask;
+	if (result != 0) goto REL;
+}
+
+:BRSET PTR8, IMM8, REL is op=0xC7 ... & REL & IMM8 & PTR8
 {
 	local mask = IMM8;
 	local result = PTR8 & mask;
@@ -1042,6 +1052,11 @@ macro add16(reg, data)
 	B = B | PTR8;
 	Z = (B == 0);
 	N = (B s< 0);
+}
+
+:OIM PTR8, IMM8 is op=0x03 ... & PTR8 & IMM8
+{
+  PTR8 = PTR8 | IMM8;
 }
 
 :PSHA is op=0x36
